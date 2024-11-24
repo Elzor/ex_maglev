@@ -1,0 +1,16 @@
+services:
+  base:
+    build: imgs/base
+    image: ex_maglev/base
+
+  test:
+    image: ex_maglev/base
+    depends_on:
+      - base
+    env_file:
+      - .env
+    volumes:
+      - "../../:/project:Z"
+    tmpfs:
+      - /run
+      - /tmp
